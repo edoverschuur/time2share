@@ -67,6 +67,8 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->state = "Lending";
         $product->lender = Auth::id();
+
+        // lendTime word omgezet naar minuten voor gemak
         $product->lendTimePlusTime = time() + ($product->lendTime * 60);
         $product->save();
 

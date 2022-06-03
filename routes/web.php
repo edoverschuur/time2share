@@ -19,25 +19,23 @@ Route::middleware(['auth','adminOrUser'])->group(function() {
 
     Route::get('/profiel', [\App\Http\Controllers\ProductController::class,'profileAuth']);
     Route::get('/profiel/{id}', [\App\Http\Controllers\ProductController::class,'profileUser']);
+
+    Route::get('/aannemen/{id}', [\App\Http\Controllers\ProductController::class,'productReturn']);
+    Route::post('/aannemen/{id}', [\App\Http\Controllers\ProductController::class,'productAccept']);
+
+    Route::get('/producten/{id}', [\App\Http\Controllers\ProductController::class,'productPage']);
+    Route::put('/producten/{id}', [\App\Http\Controllers\ProductController::class,'editState']);
 });
 
 Route::middleware(['auth','admin'])->group(function() {
     Route::put('/profiel/{id}', [\App\Http\Controllers\ProductController::class,'blockUser']);
-});
-
-Route::middleware(['auth','adminOrUser'])->group(function() {
-    Route::get('/aannemen/{id}', [\App\Http\Controllers\ProductController::class,'productReturn']);
-    Route::post('/aannemen/{id}', [\App\Http\Controllers\ProductController::class,'productAccept']);
+    Route::put('/delete{id}', [\App\Http\Controllers\ProductController::class,'deleteProduct']);
 });
 
 Route::get('/', [\App\Http\Controllers\ProductController::class,'productAll']);
 Route::get('/producten', [\App\Http\Controllers\ProductController::class,'productAll']);
 
-Route::middleware(['auth','admin'])->group(function() {
-    Route::get('/producten/{id}', [\App\Http\Controllers\ProductController::class,'productPage']);
-    Route::put('/producten/{id}', [\App\Http\Controllers\ProductController::class,'editState']);
-    Route::put('/producten/{id}', [\App\Http\Controllers\ProductController::class,'deleteProduct']);
-});
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
