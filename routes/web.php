@@ -13,15 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth','adminOrUser'])->group(function() {
     Route::get('/maak', [\App\Http\Controllers\ProductController::class,'create']);
     Route::post('/producten', [\App\Http\Controllers\ProductController::class,'store']);
 
     Route::get('/profiel', [\App\Http\Controllers\ProductController::class,'profileAuth']);
     Route::get('/profiel/{id}', [\App\Http\Controllers\ProductController::class,'profileUser']);
+});
 
+Route::middleware(['auth','admin'])->group(function() {
     Route::put('/profiel/{id}', [\App\Http\Controllers\ProductController::class,'blockUser']);
+});
 
+Route::middleware(['auth','adminOrUser'])->group(function() {
     Route::get('/aannemen/{id}', [\App\Http\Controllers\ProductController::class,'productReturn']);
     Route::post('/aannemen/{id}', [\App\Http\Controllers\ProductController::class,'productAccept']);
 });
@@ -29,7 +33,7 @@ Route::middleware(['auth'])->group(function() {
 Route::get('/', [\App\Http\Controllers\ProductController::class,'productAll']);
 Route::get('/producten', [\App\Http\Controllers\ProductController::class,'productAll']);
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth','admin'])->group(function() {
     Route::get('/producten/{id}', [\App\Http\Controllers\ProductController::class,'productPage']);
     Route::put('/producten/{id}', [\App\Http\Controllers\ProductController::class,'editState']);
     Route::put('/producten/{id}', [\App\Http\Controllers\ProductController::class,'deleteProduct']);

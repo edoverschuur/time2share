@@ -275,10 +275,6 @@ body{
 
 /* Reviews */
 
-.reviewsSection{
-    width:60rem;
-    padding-bottom:2rem;
-}
 .reviews{
     color:#eeeeee;
     padding:2rem;
@@ -326,9 +322,6 @@ body{
         grid-template-columns:repeat(2,minmax(0,1fr));
     }
 
-    .reviewsSection{
-        width:80%;
-    }
 }
 
 @media only screen and (max-width: 650px) {
@@ -349,9 +342,5 @@ body{
 
     .create-form__input{
         width:90%;
-    }
-
-    .reviewsSection{
-        width:100%;
     }
 }

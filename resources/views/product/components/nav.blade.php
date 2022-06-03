@@ -15,7 +15,7 @@
             </li>
         @else
             <li class="nav__ul__li">
-                <a href="/register">Login</a>
+                <a href="/login">Login</a>
             </li>
         @endif
     </ul>

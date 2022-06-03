@@ -43,12 +43,13 @@
         @break
     @endif
 @endforeach
-
+<ul class="u-grid-12 u-grid-gap-2">
 @foreach($review as $r)
     @if ($r->user_id == $user->id)
-        @include('product.components.reviews')
+            @include('product.components.reviews')
     @endif
 @endforeach
+</ul>
 
 <!-- Admin gebruiker blokkeren -->
 @if (Auth::check() && Auth::user()->isAdmin())

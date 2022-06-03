@@ -1,5 +1,8 @@
-<section class="reviewsSection">
-    <p class="reviews">
-        {{$r->review}}
-    </p>
-</section>
+<p class="reviews">
+    {{$r->review}}
+</p>
+
+
+
+
+
